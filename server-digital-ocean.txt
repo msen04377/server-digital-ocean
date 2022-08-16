@@ -1,0 +1,26 @@
+--------server-----------
+
+1) create droplet and need to add public ssh key
+
+my Gitbash
+2) ssh-keygen [it will create public key and private key]
+3) cat name.pub
+[get ------- ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDJfTsfyNT2y8F9Upgv7xp5PiBSzJKUpdFqxp6tBWx4Bg8MAFjjIqUOrHvh6YQVJJgidqliq7tnHjQTTU9msxOuJwv1HrLG84pVWzaGiLrSw/8FFGWlueoVEphn1ouEL96EA1XkQ4PG6p+S6R9eWy1ob7TzwR2ijHx3Q5sp6uXJjUvOo8TdyXMMqxjVbV1+qGyNtBavmnDbTbHSVLyhg53Yem2/20nKIpEcx4B2S2xGz99RSPo10p3oQCJgb7i8QRmqE6GXqM1K9Xetu3S/pxfcG9wktK/q+kc/JSw5PX41G5O0blQdNbCJzfe8q94c0I8ynmprXwarL6IDXFBHZG3MONxhZIMB4pPSrXs/9d2yPyz/gKOcgYQB3/4PCE0dLIc2QtQAIGJ6xTTKQwqSmpoFLHpv/y1eWQOXX1TnwPJkqtfCkzmzi8KYF65FKdZ8rMjTwjQIGcM6D/mU0kEA+Xm0BiO9WkpqERoIsuQmMS1jEmPAZYxs+2o78QiSKCuTI6k= Mohit@DESKTOP-3V4R6RO]
+3) droplet created successfully
+4) run command -> ssh -i file-name[private-key] root@ipv4  for logged in
+5) for update everything ->apt update -- no need when run auto update
+6) for upgrade things -> apt dist-upgrade ---- no need when run auto update
+7) enabling auto upgrade -> dpkg-reconfigure --priority-low unattended-upgrades
+8) #set your local timezone
+timedatectl set-timezone "Asia/Dhaka"
+
+9)create a user
+useradd -m -p $(openssl passwd -1 "$PASSWORD") -s /bin/bash -G sudo "$USERNAME" ( Example - adduser mohit043)
+
+10) i want to see home directory of new user - run cd /home then run ll
+
+11) to do some adminstartion work -- run usermod -aG sudo mohit043
+
+12) check sudo groups -- run groups
+
+13) make new user logged in to your server then make directory -- mkdir .ssh

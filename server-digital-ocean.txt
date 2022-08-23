@@ -7,7 +7,7 @@ my Gitbash
 3) cat name.pub
 [get ------- ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDJfTsfyNT2y8F9Upgv7xp5PiBSzJKUpdFqxp6tBWx4Bg8MAFjjIqUOrHvh6YQVJJgidqliq7tnHjQTTU9msxOuJwv1HrLG84pVWzaGiLrSw/8FFGWlueoVEphn1ouEL96EA1XkQ4PG6p+S6R9eWy1ob7TzwR2ijHx3Q5sp6uXJjUvOo8TdyXMMqxjVbV1+qGyNtBavmnDbTbHSVLyhg53Yem2/20nKIpEcx4B2S2xGz99RSPo10p3oQCJgb7i8QRmqE6GXqM1K9Xetu3S/pxfcG9wktK/q+kc/JSw5PX41G5O0blQdNbCJzfe8q94c0I8ynmprXwarL6IDXFBHZG3MONxhZIMB4pPSrXs/9d2yPyz/gKOcgYQB3/4PCE0dLIc2QtQAIGJ6xTTKQwqSmpoFLHpv/y1eWQOXX1TnwPJkqtfCkzmzi8KYF65FKdZ8rMjTwjQIGcM6D/mU0kEA+Xm0BiO9WkpqERoIsuQmMS1jEmPAZYxs+2o78QiSKCuTI6k= Mohit@DESKTOP-3V4R6RO]
 3) droplet created successfully
-4) run command -> ssh -i file-name[private-key] root@ipv4  for logged in
+4) run command -> ssh -i file-name[private-key] root@ipv4  for logged in (ex- ssh -i mohitnodejs-yt root@68.183.16.45)
 5) for update everything ->apt update -- no need when run auto update
 6) for upgrade things -> apt dist-upgrade ---- no need when run auto update
 7) enabling auto upgrade -> dpkg-reconfigure --priority-low unattended-upgrades
@@ -23,4 +23,44 @@ useradd -m -p $(openssl passwd -1 "$PASSWORD") -s /bin/bash -G sudo "$USERNAME" 
 
 12) check sudo groups -- run groups
 
-13) make new user logged in to your server then make directory -- mkdir .ssh
+13) make new user logged in to your server then make directory -- mkdir .ssh(directory name)
+
+14) copy paste of file -- cp source destination (example - cp /root/.ssh/authorized_keys /home/mohit043/.ssh
+
+15) enable some permission as well as ownership -- chmod -R 700(means permission and 7 means read write execution) filename(ex-> chmod -R 700 /home/mohit043/.ssh
+
+16) change ownership -- chown username:groupname path (ex- chown mohit043:mohit043 .ssh)
+
+//Nodejs Installation--------------( this is inside directory ex-.ssh)
+17) curl -fssL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+   sudo apt-get install -y nodejs
+   node -v
+
+//Installation pm2
+18)sudo npm install pm2@latest -g
+
+//Installation nginx
+19)sudo apt install nginx
+   systemctl status nginx
+
+20)apt install certbot python3-cerbot-nginx
+
+21) see the file which i saw in browser 404 -- sudo cat /etc/nginx/sites-available/default
+   cd /var/www/html ---- index.nginx-debian.html
+
+22) now edit file ----
+    sudo nano index.nginx-debian.html
+
+23) make dir then make folder of nodejs then do npm init after that create js file
+ nano index.js
+
+24) npm i express
+
+25) start our app -> pm2 start npm --name "hello"(folder name) -- start
+
+26) run -- curl http://localhost:3000/
+
+27) edit file  sudo nano /etc/nginx/sites-available/default
+    set reverse proxy http:/localhost/3000/; (actuall running 3000 but for apply reverse proxy serve our nodejs application)
+    sudo nginx -t(for test)
+    sudo systemctl restart nginx (for restart)
